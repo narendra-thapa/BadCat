@@ -17,6 +17,7 @@ class GamePlayScene: SKScene {
                 
         let backgroundNode = SKSpriteNode.init(imageNamed: "background_1")
         backgroundNode.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        backgroundNode.size = self.size
         self.addChild(backgroundNode)
     }
 }
