@@ -11,10 +11,11 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidLayoutSubviews() {
 
-        if let scene = GameScene(fileNamed:"GameScene") {
+        super.viewDidLayoutSubviews()
+
+        if let scene = TitleScene(fileNamed:"GameScene") {
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true
@@ -26,10 +27,12 @@ class GameViewController: UIViewController {
             /* Set the scale mode to scale to fit the window */
             scene.scaleMode = .AspectFill
             
+            scene.scaleMode = SKSceneScaleMode.ResizeFill
+            
             skView.presentScene(scene)
         }
     }
-
+    
     override func shouldAutorotate() -> Bool {
         return true
     }
