@@ -23,6 +23,7 @@ class TitleScene: SKScene {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let gamePlayScene = GamePlayScene()
+        gamePlayScene.size = self.size
         let transition = SKTransition.fadeWithDuration(1.0)
         self.view?.presentScene(gamePlayScene, transition: transition)
     }

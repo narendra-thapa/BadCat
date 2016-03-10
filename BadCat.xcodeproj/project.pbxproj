@@ -16,6 +16,10 @@
 		4833BF631C8F75F7007A5BCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4833BF611C8F75F7007A5BCC /* LaunchScreen.storyboard */; };
 		4833BF6B1C8F9699007A5BCC /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833BF6A1C8F9699007A5BCC /* TitleScene.swift */; };
 		4833BF6D1C8F9BF4007A5BCC /* GamePlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833BF6C1C8F9BF4007A5BCC /* GamePlayScene.swift */; };
+		4833BF6F1C8FBC42007A5BCC /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4833BF6E1C8FBC42007A5BCC /* Sprites.atlas */; };
+		4833BF711C90CE39007A5BCC /* MachineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833BF701C90CE39007A5BCC /* MachineNode.swift */; };
+		4833BF731C90E20C007A5BCC /* SpaceCatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833BF721C90E20C007A5BCC /* SpaceCatNode.swift */; };
+		4833BF751C910CAC007A5BCC /* ProjectileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833BF741C910CAC007A5BCC /* ProjectileNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		4833BF641C8F75F7007A5BCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4833BF6A1C8F9699007A5BCC /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		4833BF6C1C8F9BF4007A5BCC /* GamePlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayScene.swift; sourceTree = "<group>"; };
+		4833BF6E1C8FBC42007A5BCC /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
+		4833BF701C90CE39007A5BCC /* MachineNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachineNode.swift; sourceTree = "<group>"; };
+		4833BF721C90E20C007A5BCC /* SpaceCatNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceCatNode.swift; sourceTree = "<group>"; };
+		4833BF741C910CAC007A5BCC /* ProjectileNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectileNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +74,14 @@
 				4833BF561C8F75F7007A5BCC /* GameScene.sks */,
 				4833BF581C8F75F7007A5BCC /* GameScene.swift */,
 				4833BF6C1C8F9BF4007A5BCC /* GamePlayScene.swift */,
+				4833BF701C90CE39007A5BCC /* MachineNode.swift */,
+				4833BF741C910CAC007A5BCC /* ProjectileNode.swift */,
+				4833BF721C90E20C007A5BCC /* SpaceCatNode.swift */,
 				4833BF6A1C8F9699007A5BCC /* TitleScene.swift */,
 				4833BF5A1C8F75F7007A5BCC /* GameViewController.swift */,
 				4833BF5C1C8F75F7007A5BCC /* Main.storyboard */,
 				4833BF5F1C8F75F7007A5BCC /* Assets.xcassets */,
+				4833BF6E1C8FBC42007A5BCC /* Sprites.atlas */,
 				4833BF611C8F75F7007A5BCC /* LaunchScreen.storyboard */,
 				4833BF641C8F75F7007A5BCC /* Info.plist */,
 			);
@@ -138,6 +150,7 @@
 				4833BF631C8F75F7007A5BCC /* LaunchScreen.storyboard in Resources */,
 				4833BF601C8F75F7007A5BCC /* Assets.xcassets in Resources */,
 				4833BF5E1C8F75F7007A5BCC /* Main.storyboard in Resources */,
+				4833BF6F1C8FBC42007A5BCC /* Sprites.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +165,10 @@
 				4833BF5B1C8F75F7007A5BCC /* GameViewController.swift in Sources */,
 				4833BF551C8F75F7007A5BCC /* AppDelegate.swift in Sources */,
 				4833BF6B1C8F9699007A5BCC /* TitleScene.swift in Sources */,
+				4833BF731C90E20C007A5BCC /* SpaceCatNode.swift in Sources */,
 				4833BF6D1C8F9BF4007A5BCC /* GamePlayScene.swift in Sources */,
+				4833BF751C910CAC007A5BCC /* ProjectileNode.swift in Sources */,
+				4833BF711C90CE39007A5BCC /* MachineNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
