@@ -20,6 +20,9 @@
 		4833BF711C90CE39007A5BCC /* MachineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833BF701C90CE39007A5BCC /* MachineNode.swift */; };
 		4833BF731C90E20C007A5BCC /* SpaceCatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833BF721C90E20C007A5BCC /* SpaceCatNode.swift */; };
 		4833BF751C910CAC007A5BCC /* ProjectileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833BF741C910CAC007A5BCC /* ProjectileNode.swift */; };
+		4833BF781C921853007A5BCC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833BF771C921853007A5BCC /* Constants.swift */; };
+		4833BF7A1C921C86007A5BCC /* SpaceDogNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833BF791C921C86007A5BCC /* SpaceDogNode.swift */; };
+		4833BF7C1C922425007A5BCC /* GroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833BF7B1C922425007A5BCC /* GroundNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		4833BF701C90CE39007A5BCC /* MachineNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachineNode.swift; sourceTree = "<group>"; };
 		4833BF721C90E20C007A5BCC /* SpaceCatNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceCatNode.swift; sourceTree = "<group>"; };
 		4833BF741C910CAC007A5BCC /* ProjectileNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectileNode.swift; sourceTree = "<group>"; };
+		4833BF771C921853007A5BCC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4833BF791C921C86007A5BCC /* SpaceDogNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceDogNode.swift; sourceTree = "<group>"; };
+		4833BF7B1C922425007A5BCC /* GroundNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroundNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,11 +77,14 @@
 			isa = PBXGroup;
 			children = (
 				4833BF541C8F75F7007A5BCC /* AppDelegate.swift */,
+				4833BF771C921853007A5BCC /* Constants.swift */,
 				4833BF561C8F75F7007A5BCC /* GameScene.sks */,
 				4833BF581C8F75F7007A5BCC /* GameScene.swift */,
 				4833BF6C1C8F9BF4007A5BCC /* GamePlayScene.swift */,
+				4833BF7B1C922425007A5BCC /* GroundNode.swift */,
 				4833BF701C90CE39007A5BCC /* MachineNode.swift */,
 				4833BF741C910CAC007A5BCC /* ProjectileNode.swift */,
+				4833BF791C921C86007A5BCC /* SpaceDogNode.swift */,
 				4833BF721C90E20C007A5BCC /* SpaceCatNode.swift */,
 				4833BF6A1C8F9699007A5BCC /* TitleScene.swift */,
 				4833BF5A1C8F75F7007A5BCC /* GameViewController.swift */,
@@ -162,13 +171,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				4833BF591C8F75F7007A5BCC /* GameScene.swift in Sources */,
+				4833BF7A1C921C86007A5BCC /* SpaceDogNode.swift in Sources */,
 				4833BF5B1C8F75F7007A5BCC /* GameViewController.swift in Sources */,
 				4833BF551C8F75F7007A5BCC /* AppDelegate.swift in Sources */,
 				4833BF6B1C8F9699007A5BCC /* TitleScene.swift in Sources */,
 				4833BF731C90E20C007A5BCC /* SpaceCatNode.swift in Sources */,
 				4833BF6D1C8F9BF4007A5BCC /* GamePlayScene.swift in Sources */,
 				4833BF751C910CAC007A5BCC /* ProjectileNode.swift in Sources */,
+				4833BF7C1C922425007A5BCC /* GroundNode.swift in Sources */,
 				4833BF711C90CE39007A5BCC /* MachineNode.swift in Sources */,
+				4833BF781C921853007A5BCC /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

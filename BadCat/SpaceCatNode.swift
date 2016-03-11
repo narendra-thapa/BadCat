@@ -10,14 +10,14 @@ import SpriteKit
 
 class SpaceCatNode: SKSpriteNode {
     
-    var machine : SpaceCatNode?
+    var spaceCat : SpaceCatNode?
     
     func spaceCatAtPosition(position: CGPoint) -> SpaceCatNode {
-        self.machine = SpaceCatNode.init(imageNamed: "spacecat_1")
-        self.machine?.position = position
-        self.machine?.anchorPoint = CGPointMake(0.5, 0)
-        self.machine?.name = "SpaceCat"
-        return self.machine!
+        self.spaceCat = SpaceCatNode.init(imageNamed: "spacecat_1")
+        self.spaceCat?.position = position
+        self.spaceCat?.anchorPoint = CGPointMake(0.5, 0)
+        self.spaceCat?.name = "SpaceCat"
+        return self.spaceCat!
     }
     
     func performTap() {

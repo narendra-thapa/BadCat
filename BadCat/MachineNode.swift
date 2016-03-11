@@ -15,6 +15,7 @@ class MachineNode: SKSpriteNode {
         let machine = MachineNode.init(imageNamed: "machine_1")
         machine.position = position
         machine.anchorPoint = CGPointMake(0.5, 0)
+        machine.name = "Machine"
         
         
         let textures = [SKTexture(imageNamed: "machine_2"), SKTexture(imageNamed: "machine_1")]
