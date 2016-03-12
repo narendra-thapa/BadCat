@@ -7,36 +7,74 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class GamePlayScene: SKScene, SKPhysicsContactDelegate {
     
+    
+    var lastUpdateTimeInterval : NSTimeInterval = 0.0
+    var timeSinceEnemyAdded : NSTimeInterval = 0.0
+    var totalGameTime : NSTimeInterval = 0.0
+    var minSpeed : Int = Constants.SpaceDogMinSpeed
+    var addEnemyTimeInterval : NSTimeInterval = 1.5
+    
+    
+    var damageSFX = SKAction()
+    var explodeSFX = SKAction()
+    var lazerSFX = SKAction()
+    
+    var backgroundMusic = AVAudioPlayer()
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+    
+        self.lastUpdateTimeInterval = 0
+        self.timeSinceEnemyAdded = 0
         
         self.backgroundColor = UIColor.grayColor()
                 
         let backgroundNode = SKSpriteNode.init(imageNamed: "background_1")
         backgroundNode.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
         backgroundNode.size = self.size
+        backgroundNode.zPosition = 0
         self.addChild(backgroundNode)
         
         
         let machine = MachineNode()
         let machine1 = machine.machineAtPosition(CGPoint(x: CGRectGetMidX(self.frame), y: 12))
+        machine1.zPosition = 1
         self.addChild(machine1)
         
         let spaceCat = SpaceCatNode()
         let spaceCat1 = spaceCat.spaceCatAtPosition(CGPoint(x: CGRectGetMidX(self.frame), y: 12))
+        spaceCat1.zPosition = 2
         self.addChild(spaceCat1)
-        
-        self.addSpaceDog()
         
         self.physicsWorld.gravity = CGVectorMake(0, -9.8)
         self.physicsWorld.contactDelegate = self
         
         let ground = GroundNode()
-        let ground1 = ground.groundWithSize(CGSize(width: self.frame.size.width, height: 22))
+        let ground1 = ground.groundWithSize(CGSize(width: self.frame.size.width, height: 12))
+        ground1.zPosition = 3
         self.addChild(ground1)
+        
+        self.setupSounds()
+        
+        self.backgroundMusic.play()
+        
+    }
+    
+    func setupSounds() {
+        self.damageSFX = SKAction.playSoundFileNamed("Damage.caf", waitForCompletion: false)
+        self.explodeSFX = SKAction.playSoundFileNamed("Explode.caf", waitForCompletion: false)
+        self.lazerSFX = SKAction.playSoundFileNamed("Laser.caf", waitForCompletion: false)
+        
+        let url = NSBundle.mainBundle().URLForResource("Gameplay", withExtension: "mp3")
+        
+        self.backgroundMusic = try! AVAudioPlayer(contentsOfURL: url!)
+        self.backgroundMusic.numberOfLoops = -1
+        self.backgroundMusic.prepareToPlay()
+        
         
     }
     
@@ -56,22 +94,66 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
 
         let projectile = ProjectileNode()
         let projectile1 = projectile.projectileAtPosition(CGPoint(x: machine.position.x, y: machine.position.y + machine.frame.size.height-10))
+        projectile1.zPosition = 4
         self.addChild(projectile1)
         
         projectile1.moveTowardsPosition(position)
         
+        self.runAction(self.lazerSFX)
+        
     }
     
     func addSpaceDog() {
-        let spaceDogA = SpaceDogNode()
-        let spaceDogA1 = spaceDogA.spaceDogOfType(SpaceDog.SpaceDogTypeA)
-        spaceDogA1.position = CGPoint(x: 100, y: 300)
-        self.addChild(spaceDogA1)
+        let constant = Constants()
+        let randomSpaceDog = constant.randomWithMin(0, maxi: 2)
         
-        let spaceDogB = SpaceDogNode()
-        let spaceDogB1 = spaceDogB.spaceDogOfType(SpaceDog.SpaceDogTypeB)
-        spaceDogB1.position = CGPoint(x: 200, y: 300)
-        self.addChild(spaceDogB1)
+        let spaceDog = SpaceDogNode()
+        let spaceDogA = spaceDog.spaceDogOfType(SpaceDog(rawValue: randomSpaceDog)!)
+        let dy = constant.randomWithMin(Constants.SpaceDogMinSpeed, maxi: Constants.SpaceDogMaxSpeed)
+        spaceDogA.physicsBody?.velocity = CGVector(dx: 0, dy: dy)
+        
+        let y = self.frame.size.height + spaceDogA.size.height
+        let x = constant.randomWithMin(10 + Int(spaceDogA.size.width), maxi: Int(self.frame.size.width) - Int(spaceDogA.size.width) - 10)
+        
+        spaceDogA.position = CGPoint(x: CGFloat(x), y: y)
+        spaceDogA.zPosition = 5
+        self.addChild(spaceDogA)
+
+    }
+    
+    override func update(currentTime: NSTimeInterval) {
+        if (self.lastUpdateTimeInterval != 0) {
+            self.timeSinceEnemyAdded += currentTime - self.lastUpdateTimeInterval
+            self.totalGameTime += currentTime - self.lastUpdateTimeInterval
+        }
+        
+        if self.timeSinceEnemyAdded > self.addEnemyTimeInterval {
+            self.addSpaceDog()
+            self.timeSinceEnemyAdded = 0
+        }
+        
+        self.lastUpdateTimeInterval = currentTime
+        
+        if self.totalGameTime > 480 {
+            self.addEnemyTimeInterval = 0.5
+            self.minSpeed = -160
+        } else if self.totalGameTime > 240 {
+            self.addEnemyTimeInterval = 0.55
+            self.minSpeed = -145
+        } else if self.totalGameTime > 120 {
+            self.addEnemyTimeInterval = 0.65
+            self.minSpeed = -130
+        } else if self.totalGameTime > 60 {
+            self.addEnemyTimeInterval = 0.75
+            self.minSpeed = -115
+        } else if self.totalGameTime > 30 {
+            self.addEnemyTimeInterval = 1.00
+            self.minSpeed = -100
+        }
+        
+        
+        
+        
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -89,6 +171,9 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
         
         if firstBody.categoryBitMask == UInt32(Constants.CollisionEnemy) && secondBody.categoryBitMask == UInt32(Constants.CollisionProjectile) {
             print("Bam!")
+            
+            self.runAction(self.explodeSFX)
+            
             let spaceDog = firstBody.node
             let projectile = secondBody.node
             spaceDog?.removeFromParent()
@@ -98,6 +183,8 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
             
         } else if firstBody.categoryBitMask == UInt32(Constants.CollisionEnemy) && secondBody.categoryBitMask == UInt32(Constants.CollisionGround) {
             print("Hit Ground!")
+            self.runAction(self.damageSFX)
+            
             let spaceDog = firstBody.node
             spaceDog?.removeFromParent()
         }
@@ -117,6 +204,7 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
             
             let debris = SKSpriteNode.init(imageNamed: imageName)
             debris.position = position
+            debris.zPosition = 6
             self.addChild(debris)
             
             debris.physicsBody = SKPhysicsBody.init(rectangleOfSize: debris.frame.size)

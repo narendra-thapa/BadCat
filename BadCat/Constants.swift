@@ -11,6 +11,9 @@ import UIKit
 struct Constants {
     static let BCProjectile: Float = 200
     
+    static let SpaceDogMinSpeed = -100
+    static let SpaceDogMaxSpeed = -50
+    
     static let CollisionEnemy       = 1 << 0    // 0000
     static let CollisionProjectile  = 1 << 1    // 0010
     static let CollisionDebris      = 1 << 2    // 0100

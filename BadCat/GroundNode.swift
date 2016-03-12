@@ -13,10 +13,12 @@ class GroundNode: SKSpriteNode {
     
     
     func groundWithSize(sizee: CGSize) -> GroundNode {
-        let ground = GroundNode.init(texture: SKTexture.init(imageNamed: "debri_1"), color: UIColor.greenColor(), size: sizee)
+        let newground = GroundNode()
+        let ground = newground.dynamicType.init(color: UIColor.clearColor(), size: sizee)
+        //init(texture: SKTexture.init(imageNamed: "debri_1"), color: UIColor.greenColor(), size: sizee)
         ground.name = "Ground"
         
-        ground.position = CGPoint(x: size.width/2, y: size.height/2)
+        ground.position = CGPointMake(sizee.width/2, sizee.height/2)
         
         ground.setupPhysicsBody()
         return ground
