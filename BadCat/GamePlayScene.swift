@@ -220,6 +220,17 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
             })
             
         }
+        
+        let explosionPath = NSBundle.mainBundle().pathForResource("MyParticle", ofType: "sks")
+        let explosion = NSKeyedUnarchiver.unarchiveObjectWithFile(explosionPath!) as! SKEmitterNode
+        explosion.position = position
+        explosion.zPosition = 7
+        self.addChild(explosion)
+        
+        explosion.runAction(SKAction.waitForDuration(1.5), completion: { () -> Void in
+            explosion.removeFromParent()
+        })
+        
     }
     
     

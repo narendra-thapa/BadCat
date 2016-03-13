@@ -10,8 +10,6 @@ import SpriteKit
 
 class GroundNode: SKSpriteNode {
     
-    
-    
     func groundWithSize(sizee: CGSize) -> GroundNode {
         let newground = GroundNode()
         let ground = newground.dynamicType.init(color: UIColor.clearColor(), size: sizee)

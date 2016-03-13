@@ -31,6 +31,8 @@
 		4833BF8A1C9394D0007A5BCC /* Gameplay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4833BF871C9394D0007A5BCC /* Gameplay.mp3 */; };
 		4833BF8B1C9394D0007A5BCC /* StartScreen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4833BF881C9394D0007A5BCC /* StartScreen.mp3 */; };
 		4833BF8D1C939548007A5BCC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4833BF8C1C939548007A5BCC /* AVFoundation.framework */; };
+		4833BF901C94F250007A5BCC /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4833BF8E1C94F250007A5BCC /* MyParticle.sks */; };
+		4833BF911C94F250007A5BCC /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4833BF8F1C94F250007A5BCC /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		4833BF871C9394D0007A5BCC /* Gameplay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gameplay.mp3; sourceTree = "<group>"; };
 		4833BF881C9394D0007A5BCC /* StartScreen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = StartScreen.mp3; sourceTree = "<group>"; };
 		4833BF8C1C939548007A5BCC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4833BF8E1C94F250007A5BCC /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		4833BF8F1C94F250007A5BCC /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				4833BF561C8F75F7007A5BCC /* GameScene.sks */,
 				4833BF581C8F75F7007A5BCC /* GameScene.swift */,
 				4833BF6C1C8F9BF4007A5BCC /* GamePlayScene.swift */,
+				4833BF8E1C94F250007A5BCC /* MyParticle.sks */,
+				4833BF8F1C94F250007A5BCC /* spark.png */,
 				4833BF7B1C922425007A5BCC /* GroundNode.swift */,
 				4833BF701C90CE39007A5BCC /* MachineNode.swift */,
 				4833BF741C910CAC007A5BCC /* ProjectileNode.swift */,
@@ -191,10 +197,12 @@
 				4833BF841C938FC8007A5BCC /* Laser.caf in Resources */,
 				4833BF571C8F75F7007A5BCC /* GameScene.sks in Resources */,
 				4833BF631C8F75F7007A5BCC /* LaunchScreen.storyboard in Resources */,
+				4833BF911C94F250007A5BCC /* spark.png in Resources */,
 				4833BF601C8F75F7007A5BCC /* Assets.xcassets in Resources */,
 				4833BF891C9394D0007A5BCC /* GameOver.mp3 in Resources */,
 				4833BF821C938FC8007A5BCC /* Damage.caf in Resources */,
 				4833BF5E1C8F75F7007A5BCC /* Main.storyboard in Resources */,
+				4833BF901C94F250007A5BCC /* MyParticle.sks in Resources */,
 				4833BF6F1C8FBC42007A5BCC /* Sprites.atlas in Resources */,
 				4833BF851C938FC8007A5BCC /* PressStart.caf in Resources */,
 				4833BF831C938FC8007A5BCC /* Explode.caf in Resources */,
