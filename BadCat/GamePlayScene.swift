@@ -25,11 +25,18 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
     
     var backgroundMusic = AVAudioPlayer()
     
+    var gameOver = Bool()
+    var restart = Bool()
+    var gameOverDisplayed = Bool()
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
     
         self.lastUpdateTimeInterval = 0
         self.timeSinceEnemyAdded = 0
+        self.gameOver = false
+        self.restart = false
+        self.gameOverDisplayed = false
         
         self.backgroundColor = UIColor.grayColor()
                 
@@ -62,6 +69,11 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
         
         self.backgroundMusic.play()
         
+        let hud = HudNode()
+        let hudNode = hud.hudAtPosition(CGPoint(x: 0, y: self.frame.size.height-20), inFrame: self.frame)
+        self.addChild(hudNode)
+        
+        
     }
     
     func setupSounds() {
@@ -80,10 +92,28 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        for touch in touches {
-            let position = touch.locationInNode(self)
-            self.shootProjectileTowardsPosition(position)
+        if !self.gameOver {
+            for touch in touches {
+                let position = touch.locationInNode(self)
+                self.shootProjectileTowardsPosition(position)
+            }
+        } else if self.restart {
+            
+            for node in self.children {
+                node.removeFromParent()
+            }
+            
+            let scene = GamePlayScene(size: (self.view?.bounds.size)!)
+            self.view?.presentScene(scene)
         }
+    }
+    
+    func performGameOver() {
+        let gameOver = GameOver()
+        let gameOverNow = gameOver.gameOverAtPosition(CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)))
+        self.addChild(gameOverNow)
+        self.restart = true
+        self.gameOverDisplayed = true
     }
 
     func shootProjectileTowardsPosition(position : CGPoint) {
@@ -127,7 +157,7 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
             self.totalGameTime += currentTime - self.lastUpdateTimeInterval
         }
         
-        if self.timeSinceEnemyAdded > self.addEnemyTimeInterval {
+        if self.timeSinceEnemyAdded > self.addEnemyTimeInterval && !self.gameOver {
             self.addSpaceDog()
             self.timeSinceEnemyAdded = 0
         }
@@ -151,10 +181,24 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
             self.minSpeed = -100
         }
         
-        
+        if self.gameOver && !self.gameOverDisplayed {
+            self.performGameOver()
+        }
         
         
     }
+    
+    func addPoints(points: Int) {
+        let hud = self.childNodeWithName("HUD") as! HudNode
+        hud.addPoints(points)
+    }
+    
+    func loseLife() {
+        let hud = self.childNodeWithName("HUD") as! HudNode
+        self.gameOver = hud.loseLife()
+        
+    }
+    
     
     func didBeginContact(contact: SKPhysicsContact) {
         
@@ -172,6 +216,8 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
         if firstBody.categoryBitMask == UInt32(Constants.CollisionEnemy) && secondBody.categoryBitMask == UInt32(Constants.CollisionProjectile) {
             print("Bam!")
             
+            self.addPoints(Constants.pointsPerHit)
+            
             self.runAction(self.explodeSFX)
             
             let spaceDog = firstBody.node
@@ -183,6 +229,9 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
             
         } else if firstBody.categoryBitMask == UInt32(Constants.CollisionEnemy) && secondBody.categoryBitMask == UInt32(Constants.CollisionGround) {
             print("Hit Ground!")
+            
+            self.loseLife()
+            
             self.runAction(self.damageSFX)
             
             let spaceDog = firstBody.node

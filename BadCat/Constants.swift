@@ -14,6 +14,10 @@ struct Constants {
     static let SpaceDogMinSpeed = -100
     static let SpaceDogMaxSpeed = -50
     
+    static let pointsPerHit = 100
+    
+    static let SpaceCatLives = 4
+    
     static let CollisionEnemy       = 1 << 0    // 0000
     static let CollisionProjectile  = 1 << 1    // 0010
     static let CollisionDebris      = 1 << 2    // 0100

@@ -33,6 +33,8 @@
 		4833BF8D1C939548007A5BCC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4833BF8C1C939548007A5BCC /* AVFoundation.framework */; };
 		4833BF901C94F250007A5BCC /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4833BF8E1C94F250007A5BCC /* MyParticle.sks */; };
 		4833BF911C94F250007A5BCC /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4833BF8F1C94F250007A5BCC /* spark.png */; };
+		4833BF931C9505B1007A5BCC /* HudNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833BF921C9505B1007A5BCC /* HudNode.swift */; };
+		4833BF951C966615007A5BCC /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833BF941C966615007A5BCC /* GameOver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		4833BF8C1C939548007A5BCC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4833BF8E1C94F250007A5BCC /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		4833BF8F1C94F250007A5BCC /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		4833BF921C9505B1007A5BCC /* HudNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudNode.swift; sourceTree = "<group>"; };
+		4833BF941C966615007A5BCC /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				4833BF561C8F75F7007A5BCC /* GameScene.sks */,
 				4833BF581C8F75F7007A5BCC /* GameScene.swift */,
 				4833BF6C1C8F9BF4007A5BCC /* GamePlayScene.swift */,
+				4833BF941C966615007A5BCC /* GameOver.swift */,
+				4833BF921C9505B1007A5BCC /* HudNode.swift */,
 				4833BF8E1C94F250007A5BCC /* MyParticle.sks */,
 				4833BF8F1C94F250007A5BCC /* spark.png */,
 				4833BF7B1C922425007A5BCC /* GroundNode.swift */,
@@ -221,10 +227,12 @@
 				4833BF591C8F75F7007A5BCC /* GameScene.swift in Sources */,
 				4833BF7A1C921C86007A5BCC /* SpaceDogNode.swift in Sources */,
 				4833BF5B1C8F75F7007A5BCC /* GameViewController.swift in Sources */,
+				4833BF951C966615007A5BCC /* GameOver.swift in Sources */,
 				4833BF551C8F75F7007A5BCC /* AppDelegate.swift in Sources */,
 				4833BF6B1C8F9699007A5BCC /* TitleScene.swift in Sources */,
 				4833BF731C90E20C007A5BCC /* SpaceCatNode.swift in Sources */,
 				4833BF6D1C8F9BF4007A5BCC /* GamePlayScene.swift in Sources */,
+				4833BF931C9505B1007A5BCC /* HudNode.swift in Sources */,
 				4833BF751C910CAC007A5BCC /* ProjectileNode.swift in Sources */,
 				4833BF7C1C922425007A5BCC /* GroundNode.swift in Sources */,
 				4833BF711C90CE39007A5BCC /* MachineNode.swift in Sources */,
@@ -378,6 +386,7 @@
 				4833BF691C8F75F7007A5BCC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
