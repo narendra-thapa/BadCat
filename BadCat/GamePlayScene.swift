@@ -24,6 +24,7 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
     var lazerSFX = SKAction()
     
     var backgroundMusic = AVAudioPlayer()
+    var gameOverMusic = AVAudioPlayer()
     
     var gameOver = Bool()
     var restart = Bool()
@@ -49,12 +50,12 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
         
         let machine = MachineNode()
         let machine1 = machine.machineAtPosition(CGPoint(x: CGRectGetMidX(self.frame), y: 12))
-        machine1.zPosition = 1
+        machine1.zPosition = 2
         self.addChild(machine1)
         
         let spaceCat = SpaceCatNode()
         let spaceCat1 = spaceCat.spaceCatAtPosition(CGPoint(x: CGRectGetMidX(self.frame), y: 12))
-        spaceCat1.zPosition = 2
+        spaceCat1.zPosition = 3
         self.addChild(spaceCat1)
         
         self.physicsWorld.gravity = CGVectorMake(0, -9.8)
@@ -62,7 +63,7 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
         
         let ground = GroundNode()
         let ground1 = ground.groundWithSize(CGSize(width: self.frame.size.width, height: 12))
-        ground1.zPosition = 3
+        ground1.zPosition = 4
         self.addChild(ground1)
         
         self.setupSounds()
@@ -87,7 +88,11 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
         self.backgroundMusic.numberOfLoops = -1
         self.backgroundMusic.prepareToPlay()
         
+        let gameOverURL = NSBundle.mainBundle().URLForResource("GameOver", withExtension: "mp3")
         
+        self.gameOverMusic = try! AVAudioPlayer(contentsOfURL: gameOverURL!)
+        self.gameOverMusic.numberOfLoops = 1
+        self.gameOverMusic.prepareToPlay()
     }
     
     
@@ -114,6 +119,10 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(gameOverNow)
         self.restart = true
         self.gameOverDisplayed = true
+        gameOverNow.performAnimation()
+        
+        self.backgroundMusic.stop()
+        self.gameOverMusic.play()
     }
 
     func shootProjectileTowardsPosition(position : CGPoint) {
@@ -124,7 +133,7 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
 
         let projectile = ProjectileNode()
         let projectile1 = projectile.projectileAtPosition(CGPoint(x: machine.position.x, y: machine.position.y + machine.frame.size.height-10))
-        projectile1.zPosition = 4
+        projectile1.zPosition = 5
         self.addChild(projectile1)
         
         projectile1.moveTowardsPosition(position)
@@ -146,7 +155,7 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
         let x = constant.randomWithMin(10 + Int(spaceDogA.size.width), maxi: Int(self.frame.size.width) - Int(spaceDogA.size.width) - 10)
         
         spaceDogA.position = CGPoint(x: CGFloat(x), y: y)
-        spaceDogA.zPosition = 5
+        spaceDogA.zPosition = 1
         self.addChild(spaceDogA)
 
     }
@@ -253,7 +262,7 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
             
             let debris = SKSpriteNode.init(imageNamed: imageName)
             debris.position = position
-            debris.zPosition = 6
+            debris.zPosition = 1
             self.addChild(debris)
             
             debris.physicsBody = SKPhysicsBody.init(rectangleOfSize: debris.frame.size)
